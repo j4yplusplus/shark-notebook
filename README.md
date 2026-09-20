@@ -5,6 +5,8 @@ This project analyzes morphological measurements from over 99 fossil shark tooth
 
 This analysis was apart of a broader research project on understudied extinct shark taxa. I co-authored the resulting research paper and presented at the Jackson School of Geosciences' 15th Annual Student Research Symposium.
 
+This is a living document. PCA was used as a step in data exploration for further research.
+
 ## My Contributions
 - Cleaned and prepared morphological measurement data for analysis.
 - Handled missing data using overall median imputation and later taxon median imputation.
