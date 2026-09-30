@@ -1,4 +1,4 @@
-# Shark Tooth Morphology Analysis Using PCA
+# Shark Tooth Morphology Analysis Using PCA and Linear Regression
 
 ## Overview
 This project analyzes morphological measurements from over 99 fossil shark tooth specimens using principal component analysis. The goal was to determine which measurements contribute most strongly to morphological variation and explore patterns in tooth morphology among several understudied shark taxa.
