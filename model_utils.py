@@ -20,7 +20,7 @@ def linear_model(data_frame, target, predictors):
     # Cannot train a model to predict a measurement if measurement is missing
     model_df = data_frame[data_frame[target].notna()].copy()
 
-    # 1. Fill missing predictor values with the median
+    # 1. Fill missing predictor values with median TODO taxon median imputation
     # 2. Fit ordinary linear regression
     model = Pipeline([
         ("imputer", SimpleImputer(strategy="median")),
@@ -46,7 +46,7 @@ def linear_model(data_frame, target, predictors):
     print(f"MAE:  {mae:.3f}")
     print(f"RMSE: {rmse:.3f}")
 
-    return (predictions, y)
+    return (model, predictions, y)
 
 
 def plot_model(target, predictions, y):
