@@ -8,7 +8,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import GroupKFold, cross_val_predict
 from sklearn.metrics import (r2_score, mean_absolute_error, mean_squared_error)
 
-def linear_model(data_frame, tgt, predictors):
+def linear_model(data_frame, target, predictors):
     X = data_frame[predictors]
 
     # Measurement we're trying to predict
@@ -49,7 +49,7 @@ def linear_model(data_frame, tgt, predictors):
     return (predictions, y)
 
 
-def plot_model(tgt, predictions, y):
+def plot_model(target, predictions, y):
     # Chat GPT used to generate the following code for plotting actual vs predicted values
 
     plt.scatter(

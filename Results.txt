@@ -1,0 +1,79 @@
+Target measurement: BCW
+Rows used: 86
+Physical tooth groups: 26
+
+R²:   0.962
+MAE:  0.655
+RMSE: 0.912
+
+Target measurement: CH
+Rows used: 86
+Physical tooth groups: 26
+
+R²:   0.914
+MAE:  0.724
+RMSE: 0.950
+
+Target measurement: DCL
+Rows used: 86
+Physical tooth groups: 26
+
+R²:   0.859
+MAE:  0.873
+RMSE: 1.206
+
+Target measurement: IDCL
+Rows used: 86
+Physical tooth groups: 26
+
+R²:   0.878
+MAE:  0.680
+RMSE: 0.936
+
+Target measurement: IMCL
+Rows used: 86
+Physical tooth groups: 26
+
+R²:   0.874
+MAE:  0.840
+RMSE: 1.065
+
+Target measurement: MCL
+Rows used: 86
+Physical tooth groups: 26
+
+R²:   0.775
+MAE:  1.044
+RMSE: 1.553
+
+Target measurement: PCH
+Rows used: 86
+Physical tooth groups: 26
+
+R²:   0.926
+MAE:  0.599
+RMSE: 0.795
+
+Target measurement: PCW
+Rows used: 86
+Physical tooth groups: 26
+
+R²:   0.861
+MAE:  0.955
+RMSE: 1.249
+
+Target measurement: TH
+Rows used: 86
+Physical tooth groups: 26
+
+R²:   0.942
+MAE:  0.921
+RMSE: 1.281
+
+Target measurement: DS
+Rows used: 86
+Physical tooth groups: 26
+
+R²:   0.399
+MAE:  7.701
+RMSE: 10.038
