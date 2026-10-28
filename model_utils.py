@@ -7,23 +7,62 @@ from sklearn.impute import SimpleImputer
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import GroupKFold, cross_val_predict
 from sklearn.metrics import (r2_score, mean_absolute_error, mean_squared_error)
+from sklearn.base import BaseEstimator, TransformerMixin
+
+
+class TaxonMedianImputer(BaseEstimator, TransformerMixin):
+
+    def __init__(self, predictors):
+        self.predictors = predictors
+
+    def fit(self, X, y=None):
+        # Calculate medians using TRAINING data only
+        self.taxon_medians_ = (X.groupby("Taxon")[self.predictors].median())
+
+        self.overall_medians_ = X[self.predictors].median()
+
+        # Check for completely missing predictor columns
+        if self.overall_medians_.isna().any():
+            raise ValueError("A predictor has no observed values in this fold.")
+
+        return self
+
+    def transform(self, X):
+        result = X[self.predictors].copy()
+
+        for col in self.predictors:
+            # Taxon-specific median from training data
+            taxon_values = X["Taxon"].map(self.taxon_medians_[col])
+
+            result[col] = (
+                result[col]
+                .fillna(taxon_values)
+                .fillna(self.overall_medians_[col])
+            )
+
+        return result
+
 
 def linear_model(data_frame, target, predictors):
-    X = data_frame[predictors]
 
-    # Measurement we're trying to predict
-    y = data_frame[target]
-
-    # Physical tooth grouping
-    groups = data_frame["Specimen #"]
-
-    # Cannot train a model to predict a measurement if measurement is missing
+    # Cannot train a model to predict a measurement
+    # if the target measurement is missing
     model_df = data_frame[data_frame[target].notna()].copy()
 
-    # 1. Fill missing predictor values with median TODO taxon median imputation
+    # Predictor measurements and taxon for imputation
+    X = model_df[list(predictors) + ["Taxon"]]
+
+    # Measurement we're trying to predict
+    y = model_df[target]
+
+    # Physical tooth grouping
+    groups = model_df["Specimen #"]
+
+    # 1. Fill missing predictor values with taxon median
     # 2. Fit ordinary linear regression
+    
     model = Pipeline([
-        ("imputer", SimpleImputer(strategy="median")),
+        ("imputer", TaxonMedianImputer(predictors)),
         ("regression", LinearRegression())
     ])
 
